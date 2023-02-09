@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:14:36 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/02/09 12:01:07 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:36:17 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_up(t_data *data)
 	a = data->x_pos;
 	b = data->y_pos;
 	if (data->map[b - 1][a] == 'E' && check_collect(data->map) == 0)
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+		destroy(data);
 	if (data->map[b - 1][a] != '1' && data->map[b - 1][a] != 'E')
 	{
 		data->map[b][a] = '0';
@@ -46,7 +46,7 @@ void	move_down(t_data *data)
 	a = data->x_pos;
 	b = data->y_pos;
 	if (data->map[b + 1][a] == 'E' && check_collect(data->map) == 0)
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+		destroy(data);
 	if (data->map[b + 1][a] != '1' && data->map[b + 1][a] != 'E')
 	{
 		data->map[b][a] = '0';
@@ -66,7 +66,7 @@ void	move_left(t_data *data)
 	a = data->x_pos;
 	b = data->y_pos;
 	if (data->map[b][a - 1] == 'E' && check_collect(data->map) == 0)
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+		destroy(data);
 	if (data->map[b][a - 1] != '1' && data->map[b][a - 1] != 'E')
 	{
 		data->map[b][a] = '0';
@@ -86,7 +86,7 @@ void	move_right(t_data *data)
 	a = data->x_pos;
 	b = data->y_pos;
 	if (data->map[b][a + 1] == 'E' && check_collect(data->map) == 0)
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+		destroy(data);
 	if (data->map[b][a + 1] != '1' && data->map[b][a + 1] != 'E')
 	{
 		data->map[b][a] = '0';

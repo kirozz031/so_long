@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:03:58 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/09 12:06:55 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:48:32 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,19 @@ void	free_maps2(char **map, t_data data)
 	free(map);
 }
 
-void	destroy(t_data *data)
+int	destroy(t_data *data)
 {
-	free_maps(data->map, data);
 	mlx_destroy_image(data->mlx_ptr, data->wall);
 	mlx_destroy_image(data->mlx_ptr, data->floor);
 	mlx_destroy_image(data->mlx_ptr, data->exit);
 	mlx_destroy_image(data->mlx_ptr, data->chara);
 	mlx_destroy_image(data->mlx_ptr, data->collectible);
 	mlx_destroy_image(data->mlx_ptr, data->img_ptr);
+	mlx_clear_window(data->mlx_ptr, data->mlx_win);
+	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 	mlx_destroy_display(data->mlx_ptr);
+	mlx_loop_end(data->mlx_ptr);
 	free(data->mlx_ptr);
+	free_maps(data->map, data);
+	exit(1);
 }

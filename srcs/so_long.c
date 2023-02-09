@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:28:33 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/09 12:04:08 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:45:19 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static int	init(t_data *data)
 	if (!data->img_ptr)
 		return (0);
 	mlx_loop_hook(data->mlx_ptr, &handle_no_event, data);
+	mlx_hook(data->mlx_win, 17, 0, &destroy, data);
 	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, &handle_keypress, data);
 	put_walls(data, data->x_size, data->y_size, data->map);
 	put_floor(data, data->x_size, data->y_size, data->map);
@@ -49,7 +50,6 @@ static int	init(t_data *data)
 	put_exit(data, data->x_size, data->y_size, data->map);
 	put_collectible(data, data->x_size, data->y_size, data->map);
 	mlx_loop(data->mlx_ptr);
-	mlx_loop_end(data->mlx_ptr);
 	destroy(data);
 	return (0);
 }
@@ -78,7 +78,7 @@ int	main(int ac, char **av)
 				init(&data);
 			else
 			{
-				printf("Error: la map ne remplit pas les conditions requises\n");
+				ft_putstr("Error: Bad Map !");
 				return (0);
 			}
 		}

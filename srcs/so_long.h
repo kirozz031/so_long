@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:05:34 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/09 12:09:02 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:35:50 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int		good_path(char **map, t_data data);
 int		ft_strln(char *str);
 int		handle_no_event(void *data);
 int		handle_keypress(int keysym, t_data *data);
+int		destroy(t_data *data);
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
@@ -89,7 +90,6 @@ void	move_up(t_data *data);
 void	move_down(t_data *data);
 void	move_left(t_data *data);
 void	move_right(t_data *data);
-void	destroy(t_data *data);
 void	put_walls(t_data *data, int x, int y, char **map);
 void	put_floor(t_data *data, int x, int y, char **map);
 void	put_character(t_data *data, int x, int y, char **map);
@@ -97,6 +97,7 @@ void	put_exit(t_data *data, int x, int y, char **map);
 void	put_collectible(t_data *data, int x, int y, char **map);
 void	put_walls2(t_data *data, int x, int y, char **map);
 void	free_maps2(char **map, t_data data);
+void	ft_putstr(char *s);
 void	*ft_put_img(t_data *data, char *path);
 
 #endif

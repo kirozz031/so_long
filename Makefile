@@ -6,7 +6,7 @@
 #    By: lusezett <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:18:18 by lusezett          #+#    #+#              #
-#    Updated: 2023/02/09 11:59:53 by lusezett         ###   ########.fr        #
+#    Updated: 2023/02/09 12:29:42 by lusezett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC = ./srcs/so_long.c \
 			./srcs/handle_things.c \
 			./srcs/pathfinder.c \
 			./srcs/utils.c \
+			./srcs/utils2.c \
 			
 
 OBJS = $(SRC:.c=.o)
