@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:05:34 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/09 14:35:50 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:14:17 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stddef.h>
-# include "../minilibx/minilibx-linux/mlx.h"
+# include "../minilibx/mlx.h"
 
 # define GAMESIZE 64
 
@@ -57,7 +57,7 @@ typedef struct s_data
 
 	int		place;
 	int		place2;
-	int		size;
+	int		moves;
 }			t_data;
 
 int		check_p_e(char **map);
@@ -77,6 +77,7 @@ int		ft_strln(char *str);
 int		handle_no_event(void *data);
 int		handle_keypress(int keysym, t_data *data);
 int		destroy(t_data *data);
+int		check_c(char **map, char co);
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *s1, char *s2);
@@ -99,5 +100,9 @@ void	put_walls2(t_data *data, int x, int y, char **map);
 void	free_maps2(char **map, t_data data);
 void	ft_putstr(char *s);
 void	*ft_put_img(t_data *data, char *path);
+void	exit_file_error(int n, t_data data);
+void	free_maps2(char **map, t_data data);
+void	free_maps(char **map, t_data *data);
+void	ft_putnbr(int nb);
 
 #endif

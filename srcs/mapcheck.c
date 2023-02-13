@@ -6,42 +6,44 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:41:18 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/02/09 12:09:00 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:52:54 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	checkextension(char *s)
+static void	ft_free(char *str)
 {
-	if (s[ft_strlen(s) - 1] == 'r' && s[ft_strlen(s) - 2] == 'e'
-		&& s[ft_strlen(s) - 3] == 'b' && s[ft_strlen(s) - 4] == '.')
-		return (0);
-	else
-		return (1);
+	if (str)
+		free(str);
 }
 
-static int	isitarectangle(char **map)
+static int	isitarectangle(char *s)
 {
-	int		size;
 	char	*str;
-	int		j;
-	int		temp;
+	int		i;
+	int		fd;
+	int		len;
 
-	temp = strlen(map[0]);
-	j = 0;
-	size = 0;
-	while (map[j])
+	i = 0;
+	fd = open(s, O_RDWR);
+	if (fd == -1)
+		return (0);
+	str = get_next_line(fd);
+	len = ft_strln(str);
+	while (str)
 	{
-		str = map[j];
-		size = 0;
-		while (str[size])
-			size++;
-		if (temp != size && str[ft_strlen(str) - 1] == '\n')
+		if (len != ft_strln(str))
+		{
+			free(str);
 			return (1);
-		temp = size;
-		j++;
+		}
+		ft_free(str);
+		i++;
+		str = get_next_line(fd);
 	}
+	ft_free(str);
+	close(fd);
 	return (0);
 }
 
@@ -87,9 +89,9 @@ int	isclosed_2(char *str)
 
 int	check_all(t_data data)
 {
-	if (isitarectangle(data.map) == 0
+	if (isitarectangle(data.title) == 0 && check_c(data.map, 'C') == 0
 		&& check_only_c_e_p_1_0(data.map) == 0 && isclosed(data.map) == 0
-		&& good_path(data.map, data) == 0 && check_p_e(data.map) == 0)
+		&& check_p_e(data.map) == 0 && good_path(data.map, data) == 0)
 		return (0);
 	else
 		return (1);

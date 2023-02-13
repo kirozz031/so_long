@@ -6,7 +6,7 @@
 #    By: lusezett <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/30 17:18:18 by lusezett          #+#    #+#              #
-#    Updated: 2023/02/09 12:29:42 by lusezett         ###   ########.fr        #
+#    Updated: 2023/02/13 15:14:14 by lusezett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ RM = rm -rf
 
 INC =   include
 
-LIB = ./minilibx/minilibx-linux/libmlx_Linux.a -g3 -lXext -lX11 -I ./minilibx/
+LIB = ./minilibx/libmlx_Linux.a -g3 -lXext -lX11 -I ./minilibx/
 
 .c.o:
 	$(CC) -I $(INC) $(FLAGS) -c $< -o $(<:.c=.o)
@@ -45,13 +45,13 @@ LIB = ./minilibx/minilibx-linux/libmlx_Linux.a -g3 -lXext -lX11 -I ./minilibx/
 all: $(NAME)
 
 $(NAME):	$(OBJS)
-	make -C ./minilibx/minilibx-linux
+	make -C ./minilibx
 	$(CC) $(FLAGS) -I $(INC) -o $(NAME) $(OBJS) $(LIB)
 
 
 clean:
 	$(RM) $(OBJS) $(NAME)
-	make clean -C ./minilibx/minilibx-linux
+	make clean -C ./minilibx
 
 fclean: clean
 	$(RM) $(NAME)
@@ -60,4 +60,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:28:33 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/09 14:45:19 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:22:27 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	*init_content(t_data *data)
 {
+	data->moves = 0;
 	data->x_size = (ft_strlen(data->map[1]) - 1);
 	data->y_size = map_size(data->title);
 	data->x_pos = get_pos_x(data->map, 'P');
@@ -69,19 +70,20 @@ int	main(int ac, char **av)
 	t_data	data;
 
 	data.title = av[1];
-	if (ac == 2)
+	if (ac == 2 && checkextension(data.title) == 0)
 	{
-		if (checkextension(data.title) == 0)
-		{
-			data.map = create_map(data.title);
-			if (check_all(data) == 0)
-				init(&data);
-			else
-			{
-				ft_putstr("Error: Bad Map !");
-				return (0);
-			}
-		}
+		data.map = create_map(data.title);
+		if (!data.map)
+			exit_file_error(0, data);
+		if (check_all(data) == 0)
+			init(&data);
+		else
+			exit_file_error(1, data);
+	}
+	else
+	{
+		write(1, "Error\nMauvais Argument !", 25);
+		exit(1);
 	}
 	return (0);
 }

@@ -6,23 +6,25 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:03:58 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/09 14:48:32 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:40:04 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	free_maps(char **map, t_data *data)
+void	free_maps(char **map, t_data *data)
 {
 	int		i;
 
 	i = 0;
 	while (i < data->y_size)
 	{
-		free(map[i]);
+		if (map[i])
+			free(map[i]);
 		i++;
 	}
-	free(map);
+	if (map)
+		free(map);
 }
 
 void	free_maps2(char **map, t_data data)
@@ -34,10 +36,24 @@ void	free_maps2(char **map, t_data data)
 	y = map_size(data.title);
 	while (i < y)
 	{
-		free(map[i]);
+		if (map[i])
+			free(map[i]);
 		i++;
 	}
-	free(map);
+	if (map)
+		free(map);
+}
+
+void	exit_file_error(int n, t_data data)
+{
+	if (n == 0)
+		write(2, "Error\nProbleme Malloc Map", 26);
+	else if (n == 1)
+		write(2, "Error\nMauvaise Map !", 20);
+	else if (n == 2)
+		write(2, "Error\nMauvaise Extension !", 27);
+	free_maps2(data.map, data);
+	exit (1);
 }
 
 int	destroy(t_data *data)
