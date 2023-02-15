@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:04:27 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/13 15:50:50 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:46:02 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	handle_no_event(void *data)
 int	handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape || keysym == 113)
-		destroy(data);
+		clear_all(data);
 	if (keysym == XK_w)
 		move_up(data);
 	else if (keysym == XK_s)

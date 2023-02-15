@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:28:33 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/13 15:22:27 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:46:45 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	init(t_data *data)
 	if (!data->img_ptr)
 		return (0);
 	mlx_loop_hook(data->mlx_ptr, &handle_no_event, data);
-	mlx_hook(data->mlx_win, 17, 0, &destroy, data);
+	mlx_hook(data->mlx_win, 17, 0, &clear_all, data);
 	mlx_hook(data->mlx_win, KeyPress, KeyPressMask, &handle_keypress, data);
 	put_walls(data, data->x_size, data->y_size, data->map);
 	put_floor(data, data->x_size, data->y_size, data->map);
@@ -51,7 +51,7 @@ static int	init(t_data *data)
 	put_exit(data, data->x_size, data->y_size, data->map);
 	put_collectible(data, data->x_size, data->y_size, data->map);
 	mlx_loop(data->mlx_ptr);
-	destroy(data);
+	clear_all(data);
 	return (0);
 }
 

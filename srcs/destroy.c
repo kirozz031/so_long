@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 19:03:58 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/13 13:40:04 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:45:47 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	exit_file_error(int n, t_data data)
 	exit (1);
 }
 
-int	destroy(t_data *data)
+int	clear_all(t_data *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->wall);
 	mlx_destroy_image(data->mlx_ptr, data->floor);

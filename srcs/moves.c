@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:14:36 by abeaudui          #+#    #+#             */
-/*   Updated: 2023/02/13 15:14:15 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:46:33 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	move_up(t_data *data)
 		write(1, "Nombre de Mouvements : ", 23);
 		ft_putnbr(++data->moves);
 		write(1, "\n", 1);
-		destroy(data);
+		clear_all(data);
 	}
 	if (data->map[b - 1][a] != '1' && data->map[b - 1][a] != 'E')
 	{
@@ -58,7 +58,7 @@ void	move_down(t_data *data)
 		write(1, "Nombre de Mouvements : ", 23);
 		ft_putnbr(++data->moves);
 		write(1, "\n", 1);
-		destroy(data);
+		clear_all(data);
 	}
 	if (data->map[b + 1][a] != '1' && data->map[b + 1][a] != 'E')
 	{
@@ -86,7 +86,7 @@ void	move_left(t_data *data)
 		write(1, "Nombre de Mouvements : ", 23);
 		ft_putnbr(++data->moves);
 		write(1, "\n", 1);
-		destroy(data);
+		clear_all(data);
 	}
 	if (data->map[b][a - 1] != '1' && data->map[b][a - 1] != 'E')
 	{
@@ -114,7 +114,7 @@ void	move_right(t_data *data)
 		write(1, "Nombre de Mouvements : ", 23);
 		ft_putnbr(++data->moves);
 		write(1, "\n", 1);
-		destroy(data);
+		clear_all(data);
 	}
 	if (data->map[b][a + 1] != '1' && data->map[b][a + 1] != 'E')
 	{

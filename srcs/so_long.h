@@ -6,7 +6,7 @@
 /*   By: lusezett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 15:05:34 by lusezett          #+#    #+#             */
-/*   Updated: 2023/02/13 15:14:17 by lusezett         ###   ########.fr       */
+/*   Updated: 2023/02/13 19:46:51 by lusezett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		good_path(char **map, t_data data);
 int		ft_strln(char *str);
 int		handle_no_event(void *data);
 int		handle_keypress(int keysym, t_data *data);
-int		destroy(t_data *data);
+int		clear_all(t_data *data);
 int		check_c(char **map, char co);
 
 char	*get_next_line(int fd);
